@@ -7,34 +7,45 @@ const clearCartId = document.getElementById("clearCart");
 const sortCartByPriceId = document.getElementById("sortCartByPrice");
 
 //default valuees
-const products = [
-  {
-    id: 1,
-    name: "Laptop",
-    price: 50000,
-  },
-  {
-    id: 2,
-    name: "Phone",
-    price: 20000,
-  },
-  {
-    id: 3,
-    name: "Tablet",
-    price: 5000,
-  },
-  {
-    id: 4,
-    name: "SmartWattch",
-    price: 1000,
-  },
-  {
-    id: 5,
-    name: "Headphones",
-    price: 500,
-  },
-];
+// const products = [
+//   {
+//     id: 1,
+//     name: "Laptop",
+//     price: 50000,
+//   },
+//   {
+//     id: 2,
+//     name: "Phone",
+//     price: 20000,
+//   },
+//   {
+//     id: 3,
+//     name: "Tablet",
+//     price: 5000,
+//   },
+//   {
+//     id: 4,
+//     name: "SmartWattch",
+//     price: 1000,
+//   },
+//   {
+//     id: 5,
+//     name: "Headphones",
+//     price: 500,
+//   },
+// ];
+let products=[];
 
+function fetchProducts(){
+   fetch("./products.json")
+   .then(res=>res.json())
+   .then(data=> {
+    console.log(data.products);
+     products=[...(data.products)];
+     renderProducts()
+  })
+}
+fetchProducts()
 const cart = [];
 let timer;    //to reset previous timer
 clearCartId.addEventListener("click", clearCart);

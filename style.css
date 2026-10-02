@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.online-shopping {
+  max-width: 800px;
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+body {
+  background-color: rgb(214, 217, 217);
+}
+.product-row {
+  border: 1px solid black;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+span {
+  margin-left: 5px;
+}
+button {
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+button:hover {
+  background-color: rgb(23, 23, 122);
+}
+#feedback {
+  position: fixed;
+  right: 20px;
+  top: 15px;
+  background-color: green;
+  color: white;
+  display: none;
+}
+#totalPrice {
+  text-align: right;
+}
