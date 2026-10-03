@@ -7,59 +7,32 @@ const clearCartId = document.getElementById("clearCart");
 const sortCartByPriceId = document.getElementById("sortCartByPrice");
 
 //default valuees
-// const products = [
-//   {
-//     id: 1,
-//     name: "Laptop",
-//     price: 50000,
-//   },
-//   {
-//     id: 2,
-//     name: "Phone",
-//     price: 20000,
-//   },
-//   {
-//     id: 3,
-//     name: "Tablet",
-//     price: 5000,
-//   },
-//   {
-//     id: 4,
-//     name: "SmartWattch",
-//     price: 1000,
-//   },
-//   {
-//     id: 5,
-//     name: "Headphones",
-//     price: 500,
-//   },
-// ];
-let products=[];
+let products = [];
 
-function fetchProducts(){
-   fetch("./products.json")
-   .then(res=>res.json())
-   .then(data=> {
-    console.log(data.products);
-     products=[...(data.products)];
-     renderProducts()
-  })
+function fetchProducts() {
+  fetch("./products.json")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data.products);
+      products = [...(data.products)];
+      renderProducts();
+    });
 }
-fetchProducts()
+fetchProducts();
 const cart = [];
-let timer;    //to reset previous timer
+let timer; //to reset previous timer
 clearCartId.addEventListener("click", clearCart);
 sortCartByPriceId.addEventListener("click", sortCartDetails);
 
-function clearCart(){
-   if (cart.length > 0) {
+function clearCart() {
+  if (cart.length > 0) {
     cart.length = 0;
     renderCartDetails();
     updateActionButtons();
-    handleFeedback(`All then products are removed from the cart`, "error");
+    handleFeedback(`All the products are removed from the cart`, "error");
   }
 }
-function sortCartDetails(){
+function sortCartDetails() {
   if (cart.length > 0) {
     cart.sort(function (a, b) {
       return a.price - b.price;
@@ -122,7 +95,6 @@ const renderCartDetails = () => {
 };
 
 const handleFeedback = (msg, type) => {
-
   clearTimeout(timer);
   if (type?.toLowerCase() == "success")
     feedBackId.style.backgroundColor = "green";
